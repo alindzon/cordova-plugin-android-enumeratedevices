@@ -172,9 +172,11 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
 
         switch (input.getType()) {
            case AudioDeviceInfo.TYPE_HEARING_AID:
-              deviceType = input.getProdcutName().toString() + " " + HEARING_AID;
+              deviceType = input.getProductName().toString() + " " + HEARING_AID;
+              break;
            case AudioDeviceInfo.TYPE_USB_HEADSET:
               deviceType = input.getProductName().toString() + " " + USB_HEADSET;
+              break;
             case AudioDeviceInfo.TYPE_BLUETOOTH_SCO:
                 deviceType = input.getProductName().toString() + " " + BLUETOOTH_MIC;
                 break;
