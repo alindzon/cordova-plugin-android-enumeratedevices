@@ -38,8 +38,10 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
     static final String BUILTIN_MIC = "Built-in Microphone";
     static final String BLUETOOTH_MIC = "Bluetooth";
     static final String WIRED_MIC = "Wired Microphone";
-    static final String USB_MIC = "USB Microphone";
+    static final String USB_MIC = "USB Device";
     static final String UNKNOWN_MIC = "Unknown Microphone";
+   static final String USB_HEADSET = "USB Headset";
+      static final String HEARING_AID = "Hearing Aid";
 
     private Context context;
     private Activity activity;
@@ -116,9 +118,9 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
 
         for (int i = 0; i < mics.length; i++) {
             Integer type = mics[i].getType();
-            if ((type == AudioDeviceInfo.TYPE_BLUETOOTH_SCO || type == AudioDeviceInfo.TYPE_BUILTIN_MIC
+      /**      if ((type == AudioDeviceInfo.TYPE_BLUETOOTH_SCO || type == AudioDeviceInfo.TYPE_BUILTIN_MIC
                     || type == AudioDeviceInfo.TYPE_WIRED_HEADSET || type == AudioDeviceInfo.TYPE_USB_DEVICE)
-                    ) {
+                    ) {*?
                 JSONObject device = new JSONObject();
 
                 label = this.getAudioType(mics[i]);
@@ -131,7 +133,7 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
                 } catch (JSONException e) {
                     System.out.println("ERROR JSONException " + e.toString());
                 }
-            }
+          /*  } */
         }
     }
 
@@ -169,6 +171,10 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
         String deviceType = "";
 
         switch (input.getType()) {
+           case AudioDeviceInfo.TYPE_HEARING_AID:
+              deviceType = input.getProdcutName().toString() + " " + HEARING_AID;
+           case AudioDeviceInfo.TYPE_USB_HEADSET:
+              deviceType = input.getProductName().toString() + " " + USB_HEADSET;
             case AudioDeviceInfo.TYPE_BLUETOOTH_SCO:
                 deviceType = input.getProductName().toString() + " " + BLUETOOTH_MIC;
                 break;
