@@ -18,7 +18,7 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
+/* import androidx.annotation.RequiresApi; */
 import android.widget.Toast;
 import android.content.IntentFilter;
 
@@ -135,7 +135,7 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+  /*  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP) */
     private void getCams() {
         // Video inputs
         CameraManager camera = (CameraManager) this.activity.getSystemService(this.context.CAMERA_SERVICE);
