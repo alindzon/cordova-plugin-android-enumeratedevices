@@ -120,7 +120,7 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
             Integer type = mics[i].getType();
       /**      if ((type == AudioDeviceInfo.TYPE_BLUETOOTH_SCO || type == AudioDeviceInfo.TYPE_BUILTIN_MIC
                     || type == AudioDeviceInfo.TYPE_WIRED_HEADSET || type == AudioDeviceInfo.TYPE_USB_DEVICE)
-                    ) {*?
+                    ) {*/
                 JSONObject device = new JSONObject();
 
                 label = this.getAudioType(mics[i]);
