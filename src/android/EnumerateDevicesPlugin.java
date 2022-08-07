@@ -190,7 +190,7 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
                 deviceType = input.getProductName().toString() + " " + USB_MIC;
                 break;
             default:
-                deviceType = UNKNOWN_MIC;
+                deviceType = input.getProductName().toString() + " " +input.getType()+"?";
                 break;
         }
 
