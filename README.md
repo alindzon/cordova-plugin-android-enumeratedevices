@@ -1,4 +1,7 @@
 # cordova-plugin-android-enumeratedevices
+
+Experimenting with this to see if it is able to provide proper labels for android devices.  So far not providing useful enough information to be useful.  If anyone has a better solution, or has made this work, please let me know.
+
 Cordova Android plugin exposing the audio and video devices connected
 
 
