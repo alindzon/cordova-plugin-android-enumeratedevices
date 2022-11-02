@@ -107,10 +107,38 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
         this.devicesArray = new JSONArray();
 
         this.getMics();
+       this.getSpeakers();// added to get list of output devices as well
         this.getCams();
         callback.success(this.devicesArray);
     }
+/**    @RequiresApi(api = Build.VERSION_CODES.M) */
+    private void getSpeakers() {
+        AudioDeviceInfo[] speakers = this.audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS);/**GET_DEVICES_ALL);*/
+        String label = "";
 
+        for (int i = 0; i < speakers.length; i++) {
+            Integer type = speakers[i].getType();
+           if ((type == AudioDeviceInfo.TYPE_BLUETOOTH_SCO || type == AudioDeviceInfo.TYPE_BUILTIN_MIC ||
+                type == AudioDeviceInfo.TYPE_HEARING_AID || type == AudioDeviceInfo.TYPE_USB_HEADSET
+                    || type == AudioDeviceInfo.TYPE_WIRED_HEADSET || type == AudioDeviceInfo.TYPE_USB_DEVICE)
+                    ) {
+                JSONObject device = new JSONObject();
+
+                label = this.getAudioType(speakers[i]);
+                try {
+                    device.put("deviceId", Integer.toString(speakers[i].getId()));
+                    device.put("groupId", "");
+                    device.put("kind", "audiooutput");
+                    device.put("label", label);
+                    this.devicesArray.put(device);
+                } catch (JSONException e) {
+                    System.out.println("ERROR JSONException " + e.toString());
+                }
+            } 
+        }
+    }
+
+   
 /**    @RequiresApi(api = Build.VERSION_CODES.M) */
     private void getMics() {
         AudioDeviceInfo[] mics = this.audioManager.getDevices(AudioManager.GET_DEVICES_INPUTS);/**GET_DEVICES_ALL);*/
