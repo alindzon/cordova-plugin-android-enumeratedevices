@@ -113,7 +113,7 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
 
 /**    @RequiresApi(api = Build.VERSION_CODES.M) */
     private void getMics() {
-        AudioDeviceInfo[] mics = this.audioManager.getDevices(AudioManager.GET_DEVICES_ALL);
+        AudioDeviceInfo[] mics = this.audioManager.getDevices(AudioManager.GET_DEVICES_INPUTS);/**GET_DEVICES_ALL);*/
         String label = "";
 
         for (int i = 0; i < mics.length; i++) {
